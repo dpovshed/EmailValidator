@@ -144,6 +144,10 @@ abstract class Parser
     {
         $previous = $this->lexer->getPrevious();
 
+        if (empty($previous)) {
+            return false;
+        }
+
         if ($previous['type'] === EmailLexer::S_BACKSLASH
             &&
             $this->lexer->token['type'] !== EmailLexer::GENERIC
